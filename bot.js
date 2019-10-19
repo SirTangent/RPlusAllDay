@@ -63,6 +63,10 @@ let vines =[
     {
         "keyword": "dance",
         "url": "https://youtu.be/ZkNMZlkrzaU"
+    },
+    {
+        "keyword": "croissant",
+        "url": "https://youtu.be/hRFUZBXOWZI"
     }
 ]
 
