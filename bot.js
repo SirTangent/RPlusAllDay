@@ -2,13 +2,14 @@ const eris = require('eris');
 require('dotenv').config();
 const PREFIX = 'v!';
 let mention_responses = ["Hey kid, want a vine?", "You 'member vine? I 'member!", "Vineeeee... livessss...", "Try saying a vine quote!"];
+let comps = ["https://youtu.be/rnU-puAUMbs", "https://youtu.be/hBsP1N89pYU", "https://youtu.be/Z2s1qIBr-DU", "https://youtu.be/FZQE_aGJPoc", "https://www.youtube.com/watch?v=XeYbSxfwTgE"];
 
 // Create a Client instance with our bot token.
 const bot = new eris.Client(process.env.API_TOKEN || '');
 
 // When the bot is connected and ready, log to console.
 bot.on('ready', () => {
-   console.log('Connected and ready.');
+   console.log('The boy is awake.');
 });
 
 // Every time a message is sent anywhere the bot is present,
@@ -31,9 +32,19 @@ bot.on('messageCreate', async (msg) => {
            console.warn(err);
        }
    }
+   //Commands
+   if(msg.content.startsWith(PREFIX)){
+       var commandTxt = msg.content.substring(2);
+       if(commandTxt == "help"){
+           msg.channel.createMessage("LIST OF COMMANDS:\nv!help: list commands\nv!comp: get a vine compilation\nI also respond to keywords from famous vines!");
+       }
+       if(commandTxt == "comp"){
+           msg.channel.createMessage(comps[Math.floor(Math.random() * comps.length)]);
+       }
+   }
 
-    if(msg.content.toLowerCase().includes('wednesday')){
-        msg.channel.createMessage('https://youtu.be/du-TY1GUFGk');
+   if(msg.content.toLowerCase().includes('wednesday')){
+       msg.channel.createMessage('https://youtu.be/du-TY1GUFGk');
     }
 });
 
