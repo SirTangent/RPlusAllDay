@@ -2,7 +2,7 @@ const eris = require('eris');
 require('dotenv').config();
 const PREFIX = 'v!';
 let mention_responses = ["Hey kid, want a vine?", "You 'member vine? I 'member!", "Vineeeee... livessss...", "Try saying a vine quote!"];
-let comps = ["https://youtu.be/rnU-puAUMbs", "https://youtu.be/hBsP1N89pYU", "https://youtu.be/Z2s1qIBr-DU", "https://youtu.be/FZQE_aGJPoc"];
+let comps = ["https://youtu.be/rnU-puAUMbs", "https://youtu.be/hBsP1N89pYU", "https://youtu.be/Z2s1qIBr-DU", "https://youtu.be/FZQE_aGJPoc", "https://www.youtube.com/watch?v=XeYbSxfwTgE"];
 
 // Create a Client instance with our bot token.
 const bot = new eris.Client(process.env.API_TOKEN || '');
@@ -33,9 +33,9 @@ bot.on('messageCreate', async (msg) => {
        }
    }
    //Commands
-   if(msg.content.includes(PREFIX)){
+   if(msg.content.startsWith(PREFIX)){
        if(msg.content.includes("help")){
-           msg.channel.createMessage("LIST OF COMMANDS:\nhelp: list commands\ncomp: get a vine compilation\nI also respond to keywords from famous vines!");
+           msg.channel.createMessage("LIST OF COMMANDS:\nv!help: list commands\nv!comp: get a vine compilation\nI also respond to keywords from famous vines!");
        }
        if(msg.content.includes("comp")){
            msg.channel.createMessage(comps[Math.floor(Math.random() * comps.length)]);
