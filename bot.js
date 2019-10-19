@@ -115,10 +115,13 @@ bot.on('messageCreate', async (msg) => {
    if(msg.content.startsWith(PREFIX)){
        var commandTxt = msg.content.substring(2);
        if(commandTxt == "help"){
-           msg.channel.createMessage("LIST OF COMMANDS:\nv!help: list commands\nv!comp: get a vine compilation\nI also respond to keywords from famous vines!");
+           msg.channel.createMessage("LIST OF COMMANDS:\nv!help: list commands\nv!comp: get a vine compilation\nv!random: get a random vine\nI also respond to keywords from famous vines!");
        }
        if(commandTxt == "comp"){
            msg.channel.createMessage(comps[Math.floor(Math.random() * comps.length)]);
+       }
+       if(commandTxt == "random"){
+           msg.channel.createMessage("Here's a good one:\n" + vines[Math.floor(Math.random() * vines.length)].url);
        }
    }
 
