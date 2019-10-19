@@ -25,3 +25,6 @@ When the bot detects a keyword from a famous Vine, it will send the correspondin
 #### Mention Response
 The bot knows its name! It will pick a phrase at random from a list of possible responses and send it to the channel when mentioned
 > @VineBot
+
+## Bot Invite Link
+https://discordapp.com/oauth2/authorize?scope=bot&client_id=634966339752034317
