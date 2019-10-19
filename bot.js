@@ -9,7 +9,7 @@ const bot = new eris.Client(process.env.API_TOKEN || '');
 
 // When the bot is connected and ready, log to console.
 bot.on('ready', () => {
-   console.log('Connected and ready.');
+   console.log('The boy is awake.');
 });
 
 // Every time a message is sent anywhere the bot is present,
@@ -34,10 +34,11 @@ bot.on('messageCreate', async (msg) => {
    }
    //Commands
    if(msg.content.startsWith(PREFIX)){
-       if(msg.content.includes("help")){
+       var commandTxt = msg.content.substring(2);
+       if(commandTxt == "help"){
            msg.channel.createMessage("LIST OF COMMANDS:\nv!help: list commands\nv!comp: get a vine compilation\nI also respond to keywords from famous vines!");
        }
-       if(msg.content.includes("comp")){
+       if(commandTxt == "comp"){
            msg.channel.createMessage(comps[Math.floor(Math.random() * comps.length)]);
        }
    }
