@@ -1,7 +1,8 @@
 const eris = require('eris');
+require('dotenv').config();
 
 // Create a Client instance with our bot token.
-const bot = new eris.Client('mNjM0OTY2MzM5NzUyMDM0MzE3.XaqU4A.YxD7yth8WD4a8CsrS3rvPBIypXY');
+const bot = new eris.Client(process.env.API_TOKEN || '');
 
 // When the bot is connected and ready, log to console.
 bot.on('ready', () => {
