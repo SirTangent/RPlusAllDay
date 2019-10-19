@@ -67,6 +67,22 @@ let vines =[
     {
         "keyword": "croissant",
         "url": "https://youtu.be/hRFUZBXOWZI"
+    },
+    {
+        "keyword": "weed",
+        "url": "https://youtu.be/FSpXiEK0qBg"
+    },
+    {
+        "keyword": "chickens",
+        "url": "https://youtu.be/NsLKQTh-Bqo"
+    },
+    {
+        "keyword": "child",
+        "url": "https://youtu.be/FyH7QThXgPE"
+    },
+    {
+        "keyword": "wii",
+        "url": "https://youtu.be/ICEPXhZeEMU"
     }
 ]
 
