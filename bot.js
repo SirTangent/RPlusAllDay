@@ -7,6 +7,53 @@ let comps = ["https://youtu.be/rnU-puAUMbs", "https://youtu.be/hBsP1N89pYU", "ht
 // Create a Client instance with our bot token.
 const bot = new eris.Client(process.env.API_TOKEN || '');
 
+let vines =[
+    {
+        "keyword": "wednesday",
+        "url": "https://www.youtube.com/watch?v=du-TY1GUFGk"
+    },
+    {
+        "keyword": "chili's",
+        "url": "https://www.youtube.com/watch?v=WEGCAS8nCPU"
+    },
+    {
+        "keyword": "i love you",
+        "url": "https://www.youtube.com/watch?v=psxBizrPIxg"
+    },
+    {
+        "keyword": "roommates",
+        "url": "https://www.youtube.com/watch?v=y-P0m0M_8pc"
+    },
+    {
+        "keyword": "bad bitch",
+        "url": "https://www.youtube.com/watch?v=GaNGKD4MTV0"
+    },
+    {
+        "keyword": "tortilla",
+        "url": "https://youtube.com/watch?v=21jLmc_Il3o&list=PLA8U"
+    },
+    {
+        "keyword": "christmas",
+        "url": "https://youtube.com/watch?v=_Z-Nu351j58&list=PLA8U"
+    },
+    {
+        "keyword": "gay",
+        "url": "https://youtube.com/watch?v=EwAajOtfNT8&list=PLA8U"
+    },
+    {
+        "keyword": "suh",
+        "url": "https://youtube.com/watch?v=pIHYPaoh79I&list=PLA8U"
+    },
+    {
+        "keyword": "adam",
+        "url": "https://youtube.com/watch?v=kZSfPPJ4Fk8&list=PLA8U"
+    },
+    {
+        "keyword": "hello",
+        "url": "https://www.youtube.com/watch?v=YtSPQIK15uc"
+    }
+]
+
 // When the bot is connected and ready, log to console.
 bot.on('ready', () => {
    console.log('The boy is awake.');
@@ -43,9 +90,11 @@ bot.on('messageCreate', async (msg) => {
        }
    }
 
-   if(msg.content.toLowerCase().includes('wednesday')){
-       msg.channel.createMessage('https://youtu.be/du-TY1GUFGk');
-    }
+   for(let x = 0; x < vines.length; x++){
+    if(msg.content.toLowerCase().includes(vines[x].keyword)){
+        msg.channel.createMessage(vines[x].url);
+     }
+   }
 });
 
 bot.on('error', err => {
