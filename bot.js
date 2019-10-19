@@ -1,11 +1,9 @@
-API_KEY = '';
-
 const eris = require('eris');
 require('dotenv').config();
 const PREFIX = 'v!';
 
 // Create a Client instance with our bot token.
-const bot = new eris.Client(process.env.API_TOKEN || API_KEY);
+const bot = new eris.Client(process.env.API_TOKEN || '');
 
 // When the bot is connected and ready, log to console.
 bot.on('ready', () => {
@@ -32,12 +30,13 @@ bot.on('messageCreate', async (msg) => {
            console.warn(err);
        }
    }
-
-    if(msg.content.includes('Wednesday')){
-        msg.channel.createMessage('https://youtu.be/du-TY1GUFGk');
-    }
 });
 
+bot.on('message', msg => {
+    if(msg.content.includes('Wednesday')){
+        msg.reply('https://youtu.be/du-TY1GUFGk');
+    }
+});
 
 bot.on('error', err => {
    console.warn(err);
