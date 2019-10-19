@@ -30,13 +30,12 @@ bot.on('messageCreate', async (msg) => {
            console.warn(err);
        }
    }
-});
 
-bot.on('message', msg => {
     if(msg.content.includes('Wednesday')){
-        msg.reply('https://youtu.be/du-TY1GUFGk');
+        msg.channel.createMessage('https://youtu.be/du-TY1GUFGk');
     }
 });
+
 
 bot.on('error', err => {
    console.warn(err);
