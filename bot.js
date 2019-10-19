@@ -3,6 +3,7 @@ API_KEY = '';
 const eris = require('eris');
 require('dotenv').config();
 const PREFIX = 'v!';
+let mention_responses = ["Hey kid, want a vine?", "You 'member vine? I 'member!", "Vineeeee... livessss...", "Try saying a vine quote!"];
 
 // Create a Client instance with our bot token.
 const bot = new eris.Client(process.env.API_TOKEN || API_KEY);
@@ -22,7 +23,7 @@ bot.on('messageCreate', async (msg) => {
 
    if (botWasMentioned) {
        try {
-           await msg.channel.createMessage('Present');
+           await msg.channel.createMessage(mention_responses[Math.floor(Math.random() * mention_responses.length)]);
        } catch (err) {
            // There are various reasons why sending a message may fail.
            // The API might time out or choke and return a 5xx status,
