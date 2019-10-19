@@ -46,7 +46,16 @@ bot.on('messageCreate', async (msg) => {
    if(msg.content.toLowerCase().includes('wednesday')){
        msg.channel.createMessage('https://youtu.be/du-TY1GUFGk');
     }
+
+    // Get the quote algorithm
+    var input = msg.content.toLowerCase();
+    for (x of input.split(" ")) {
+        console.log(x);
+
+    }
 });
+
+
 
 bot.on('error', err => {
    console.warn(err);
