@@ -51,6 +51,18 @@ let vines =[
     {
         "keyword": "hello",
         "url": "https://www.youtube.com/watch?v=YtSPQIK15uc"
+    },
+    {
+        "keyword": "twenty one",
+        "url": "https://youtu.be/BzVXbeASRiQ"
+    },
+    {
+        "keyword": "road work",
+        "url": "https://youtu.be/6AYv6rV3NXE"
+    },
+    {
+        "keyword": "dance",
+        "url": "https://youtu.be/ZkNMZlkrzaU"
     }
 ]
 
