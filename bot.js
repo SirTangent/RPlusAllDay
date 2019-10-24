@@ -7,6 +7,8 @@ let comps = ["https://youtu.be/rnU-puAUMbs", "https://youtu.be/hBsP1N89pYU", "ht
 // Create a Client instance with our bot token.
 const bot = new eris.Client(process.env.API_TOKEN || '');
 
+let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
 let vines =[
     {
         "keyword": "wednesday",
@@ -84,11 +86,12 @@ let vines =[
         "keyword": "wii",
         "url": "https://youtu.be/ICEPXhZeEMU"
     }
-]
+];
 
 // When the bot is connected and ready, log to console.
 bot.on('ready', () => {
    console.log('The boy is awake.');
+   bot.editStatus("online",{name: "type v!help", type: 0});
 });
 
 // Every time a message is sent anywhere the bot is present,
@@ -115,7 +118,7 @@ bot.on('messageCreate', async (msg) => {
    if(msg.content.startsWith(PREFIX)){
        var commandTxt = msg.content.substring(2);
        if(commandTxt == "help"){
-           msg.channel.createMessage("LIST OF COMMANDS:\nv!help: list commands\nv!comp: get a vine compilation\nv!random: get a random vine\nI also respond to keywords from famous vines!");
+           msg.channel.createMessage("LIST OF COMMANDS:\nv!help: list commands\nv!comp: get a vine compilation\nv!random: get a random vine\nv!day: Is it Wednesday?\nI also respond to keywords from famous vines!");
        }
        if(commandTxt == "comp"){
            msg.channel.createMessage(comps[Math.floor(Math.random() * comps.length)]);
@@ -123,12 +126,34 @@ bot.on('messageCreate', async (msg) => {
        if(commandTxt == "random"){
            msg.channel.createMessage("Here's a good one:\n" + vines[Math.floor(Math.random() * vines.length)].url);
        }
+       if(commandTxt == "day"){
+           let d = new Date();
+           if(d.getDay() == 3){
+               //It's Wednesday
+               msg.channel.createMessage("Yep!");
+               msg.channel.createMessage("https://www.youtube.com/watch?v=du-TY1GUFGk");
+           }
+           else{
+               msg.channel.createMessage("Nope.");
+               msg.channel.createMessage("It is " + weekdays[d.getDay()] + ", my dudes.");
+               msg.channel.createMessage("aaaaaaAAAAAAA!");
+           }
+       }
    }
 
    for(let x = 0; x < vines.length; x++){
     if(msg.content.toLowerCase().includes(vines[x].keyword)){
         msg.channel.createMessage(vines[x].url);
      }
+   }
+
+   if(msg.content.toLowerCase().includes("vine")){
+       msg.addReaction("❤");
+   }
+
+   //Full shade, idgaf lol
+   if(msg.content.toLowerCase().includes("tiktok")){
+       msg.addReaction("😡");
    }
 });
 
