@@ -1,8 +1,9 @@
 const eris = require('eris');
+const logger = require('./logger');
 require('dotenv').config();
 const PREFIX = 'v!';
 let mention_responses = ["Hey kid, want a vine?", "You 'member vine? I 'member!", "Vineeeee... livessss...", "Try saying a vine quote!"];
-let comps = ["https://youtu.be/rnU-puAUMbs", "https://youtu.be/hBsP1N89pYU", "https://youtu.be/Z2s1qIBr-DU", "https://youtu.be/FZQE_aGJPoc", "https://www.youtube.com/watch?v=XeYbSxfwTgE"];
+let comps = ["https://youtu.be/rnU-puAUMbs", "https://youtu.be/hBsP1N89pYU", "https://youtu.be/Z2s1qIBr-DU", "https://youtu.be/FZQE_aGJPoc", "https://www.youtube.com/watch?v=XeYbSxfwTgE", "https://youtu.be/wE891Z9gcXY"];
 
 // Create a Client instance with our bot token.
 const bot = new eris.Client(process.env.API_TOKEN || '');
@@ -15,20 +16,16 @@ let vines =[
         "url": "https://www.youtube.com/watch?v=du-TY1GUFGk"
     },
     {
-        "keyword": "chili's",
+        "keyword": "chilis",
         "url": "https://www.youtube.com/watch?v=WEGCAS8nCPU"
-    },
-    {
-        "keyword": "i love you",
-        "url": "https://www.youtube.com/watch?v=psxBizrPIxg"
     },
     {
         "keyword": "roommates",
         "url": "https://www.youtube.com/watch?v=y-P0m0M_8pc"
     },
     {
-        "keyword": "bad bitch",
-        "url": "https://www.youtube.com/watch?v=GaNGKD4MTV0"
+        "keyword": "bitch",
+        "url": "https://youtube.com/shorts/0QoHrMPaLUs?si=w-f5FeT_H7ZBGvQr"
     },
     {
         "keyword": "tortilla",
@@ -55,7 +52,7 @@ let vines =[
         "url": "https://www.youtube.com/watch?v=YtSPQIK15uc"
     },
     {
-        "keyword": "twenty one",
+        "keyword": " 21 ",
         "url": "https://youtu.be/BzVXbeASRiQ"
     },
     {
@@ -81,12 +78,48 @@ let vines =[
     {
         "keyword": "wii",
         "url": "https://youtu.be/ICEPXhZeEMU"
+    },
+    {
+        "keyword": "shots",
+        "url": "https://youtu.be/csn2CIWPVbM"
+    },
+    {
+        "keyword": "dollar store",
+        "url": "https://www.youtube.com/shorts/U0YBP1ve5rw"
+    },
+    {
+        "keyword": "kush",
+        "url": "https://www.youtube.com/shorts/U0YBP1ve5rw"
+    },
+    {
+        "keyword": "4x4",
+        "url": "https://www.youtube.com/shorts/GRuFdKL2yMw"
+    },
+    {
+        "keyword": "watermelon",
+        "url": "https://youtu.be/yd5fljg9-1Q"
+    },
+    {
+        "keyword": "ryan",
+        "url": "https://youtu.be/6fIZXRN4saM"
+    },
+    {
+        "keyword": "arkansas",
+        "url": "https://www.youtube.com/shorts/FPZi51GL3cs"
+    },
+    {
+        "keyword": "lebron",
+        "url": "https://youtube.com/shorts/ZeIr0FVJwGs"
+    },
+    {
+        "keyword": "gamecube",
+        "url": "https://youtu.be/DFzc3EsDaIw"
     }
 ];
 
-// When the bot is connected and ready, log to console.
+// When the bot is connected and ready, log to logger.
 bot.on('ready', () => {
-   console.log('The boy is awake.');
+   logger.info('The boy is awake.');
    bot.editStatus("online",{name: "type v!help", type: 0});
 });
 
@@ -106,8 +139,8 @@ bot.on('messageCreate', async (msg) => {
            // The API might time out or choke and return a 5xx status,
            // or the bot may not have permission to send the
            // message (403 status).
-           console.warn('Failed to respond to mention.');
-           console.warn(err);
+           logger.warn('Failed to respond to mention.');
+           logger.warn(err);
        }
    }
    //Commands
@@ -148,13 +181,17 @@ bot.on('messageCreate', async (msg) => {
    }
 
    //Full shade, idgaf lol
-   if(msg.content.toLowerCase().includes("tiktok")){
-       msg.addReaction("😡");
+   let cringe = ["tiktok", "x.com", "twitter"]
+   for (let site of cringe) {
+    if(msg.content.toLowerCase().includes(site)){
+        msg.addReaction("😡");
+        break;
+    }
    }
 });
 
 bot.on('error', err => {
-   console.warn(err);
+   logger.warn(err);
 });
 
 bot.connect();
