@@ -6,12 +6,11 @@ FROM node:18
 WORKDIR /usr/src/app
 
 RUN git clone https://github.com/wkhammond/vinebot.git
-WORKDIR /usr/src/app/UwUizer
+WORKDIR /usr/src/app/vinebot
 
 # COPY package*.json ./
 
-RUN apt-get update && \
-    npm install
+RUN apt-get update && npm install
 
 # Copy local code to the container image.
 # COPY *.js .
