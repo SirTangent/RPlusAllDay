@@ -1,16 +1,17 @@
 # Use the official lightweight Node.js 18 image.
 # https://hub.docker.com/_/node
-FROM node:18
+FROM node:22
 
 # Create and change to the app directory.
 WORKDIR /usr/src/app
 
-RUN git clone https://github.com/wkhammond/vinebot.git
+RUN git clone https://github.com/SirTangent/RPlusAllDay.git vinebot
 WORKDIR /usr/src/app/vinebot
 
 # COPY package*.json ./
 
-RUN apt-get update && npm install
+RUN apt-get update && apt-get upgrade -y 
+RUN npm install && npm audit fix
 
 # Copy local code to the container image.
 # COPY *.js .
